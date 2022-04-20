@@ -1,0 +1,11 @@
+.copy_right_footer{
+    position: fixed;
+}
+img{
+    width: 60%;
+    height: 60%;
+    box-shadow: 0 6px 8px 0 rgba(2, 2, 2, 0.2)
+}
+img:hover{
+    border-radius: 140px;
+}
