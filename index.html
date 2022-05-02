@@ -15,6 +15,9 @@
     </head>
     
     <body>
+        <a id="myLink1" download="beans1.png"></a>
+        <a id="myLink2" download="beans2.png"></a>
+        <a id="myLink2" download="beans3.png"></a>
         <center>
             <h1>Collage Web App </h1>
             <hr>
@@ -22,8 +25,10 @@
     
             <h3>Say "selfie" for Taking your selfie to make a Collage</h3>
     
-            <button class="btn btn-lg btn-primary" onclick="start()">Start</button>
+            <button class="btn btn-lg btn-primary" onclick=selfie()>Start</button>
             <h4>Press the Start button</h4>
+            <textarea id="textbox"></textarea>
+            <br>
     
             <label>Your webcam : </label>
             <div id="camera"></div>
@@ -32,18 +37,8 @@
     
             <label>Your selife Will Display Here: </label>
             <br>
-            <div id="resultRow">
-                <div id="result1" class="column">
-                    <img src="https://unsplash.com/photos/F3Dde_9thd8/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjQzOTUxMTU0&force=true">
-                </div>
-    
-                <div id="result2" class="column">
-                    <img src="https://unsplash.com/photos/dozkVhDyvhQ/download?force=true">
-                </div>
-    
-                <div id="result3" class="column">
-                    <img src="https://unsplash.com/photos/N10auyEVst8/download?ixid=MnwxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjQzOTUxMjA2&force=true">
-                </div>
+            <div id="output">
+                
                 <div class="copy_right_footer">
                     Developed by - PH03NIX5
                 </div>
