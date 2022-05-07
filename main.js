@@ -1,71 +1,68 @@
-var speech_rec =window.webkitSpeechRecognition;
-    var recognition=new speech_rec();
-    
-function selfie(){
-    document.getElementById("output").innerHTML="";
-    
+var SpeechRecognition = window.webkitSpeechRecognition;
+var Content;
+var recognition = new SpeechRecognition();
+
+function start()
+{
     recognition.start();
-}
-recognition.onresult=function(event){
-    console.log(event);
-    contents=event.results[0][0].transcript;
-    document.getElementById("textbox").innerHTML=contents;
-    
-    if(contents=="selfie"){
-        openCam();
-        speak();
-        setTimeout(
-          picture  
-         , 5000);
-            speak()
-         setTimeout(
-            picture 
-           , 5000);
-            speak()
-            setTimeout(
-                picture 
-               , 5000);
-                speak()
-    }
-    
-}
-function picture(){
-    snap();
-    save();
-}
+} 
+
+
+camera = document.getElementById("camera");
+Webcam.set({
+    width:500,
+    height:400,
+    image_format : 'jpeg',
+    jpeg_quality:90
+});
+
+
+
 function speak(){
-    var synth=window.speechSynthesis;
-    var speakData="Ok taking your selfie in 5 seconds";
-    var speakOBJ=new SpeechSynthesisUtterance(speakData);
-    synth.speak(speakOBJ);
+
+    
+    var synth = window.speechSynthesis;
+    Webcam.attach(camera);
+
+    speak_data = "Taking your next Selfie in 5 seconds";
+    var utterThis = new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
+
+
 }
-function openCam(){
-    Webcam.set({
-        width: 320,
-        height: 240,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-     });
-     Webcam.attach( '#webcam' );
+function take_sanpshot(){
+    console.log(img_id)
+    webcam.snap(function(data_uri){
+        if(img_id=="selfie1"){
+            document.getElementById("result1").innerHTML="<img id='selfie1' src='"+data_uri+"'/>"
+        }
+        if(img_id=="selfie2"){
+            document.getElementById("result2").innerHTML="<img id='selfie2' src='"+data_uri+"'/>"
+        }
+        if(img_id=="selfie3"){
+            document.getElementById("result3").innerHTML="<img id='selfie3' src='"+data_uri+"'/>"
+        }
+    });
 }
-function snap(){
-    Webcam.snap( function(data_uri) {
-        // display results in page
-        document.getElementById('output').innerHTML = 
-         '<img id="img1" src="'+data_uri+'"/><img id="img1" src="'+data_uri+'"/><img id="img1" src="'+data_uri+'"/>';
-    } );
-}
-function save(){
-    link=document.getElementById("myLink1");
-    img1=document.getElementById("img1").src;
-    link.href=img1;
-    link.click();
-    link=document.getElementById("myLink2");
-    img2=document.getElementById("img2").src;
-    link.href=img2;
-    link.click();
-    link=document.getElementById("myLink3");
-    img2=document.getElementById("img3").src;
-    link.href=img3;
-    link.click();
-}
+setTimeout(function(){
+    img_id="selfie1";
+    take_sanpshot();
+    speak_data="Taking your next Selfie in 10 seconds";
+    var utterThis= new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
+}, 5000);    
+
+setTimeout(function(){
+    img_id="selfie2";
+    take_sanpshot();
+    speak_data="Taking your next Selfie in 15 seconds";
+    var utterThis= new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
+}, 10000)
+
+setTimeout(function(){
+    img_id="selfie3";
+    take_sanpshot();
+    
+}, 15000)
+
